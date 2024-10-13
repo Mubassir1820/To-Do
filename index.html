@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="index.js"></script> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>To-Do app</title>
+</head>
+<body class="bg-slate-200">
+    <h1 class="text-4xl md: font-bold text-center py-20">Tasks</h1>
+    <!-- Task List -->
+     <div id="task-list" class="flex justify-between">
+
+     </div>
+     <button id="myBtn" class="bg-cyan-900 text-white text-4xl fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-8 px-4 py-4 rounded-full w-40">Create</button>
+
+     <!-- Task Edit forms -->
+     <div id="tasks" class="flex flex-col justify-center items-center">
+        <input type="text" placeholder="What do you want to add to the list" id="note-text" class="block w-2/4 h-24 text-center mb-5 rounded-xl">
+        <input type="date" id="note-date" class="mb-5 w-1/4 h-10 text-center rounded-xl">
+        <input type="time" id="note-time" class="mb-5 w-1/4 h-10 text-center rounded-xl">
+        <button id="add-btn" class="bg-black text-white rounded w-24">Add</button>
+     </div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script>
+        
+        
+        document.getElementById("myBtn").addEventListener("click", function(){
+            document.getElementById("tasks").style.display = "block";
+        })
+
+        document.getElementById("add-btn").addEventListener("click", function(){
+            
+            console.log("Add button has been clicked");
+            
+            const noteValue = document.getElementById("note-text").value;
+            const noteDate = document.getElementById("note-date").value;
+            const noteTime = document.getElementById("note-time").value;
+
+
+            const noteDiv = document.createElement("div");
+            noteDiv.className = "notes";
+
+            noteDiv.innerHTML = `
+            <P>Notes: ${noteValue} - Created for: ${noteDate} - Time: ${noteTime}</p>
+            <button class="edit-btn">Edit</button>
+            <button class="save-btn">Save</button>
+            `;
+            document.getElementById("task-list").appendChild(noteDiv);
+            
+            document.getElementById("tasks").style.display = "none";
+
+
+            document.getElementById("note-text").value = "";
+            document.getElementById("note-date").value = "";
+            document.getElementById("note-time").value = "";
+        })
+
+        document.getElementById("edit-btn").addEventListener("click", function(){
+            document.getElementById("tasks").style.display = "block";
+
+            document.getElementById("note-text").value = noteValue;
+            document.getElementById("note-date").value = noteDate;
+            document.getElementById("note-time").value = noteTime;
+
+
+            document.getElementById("save-btn").addEventListener("click", function(){
+
+            })
+        })
+    </script>
+</body>
+</html>
